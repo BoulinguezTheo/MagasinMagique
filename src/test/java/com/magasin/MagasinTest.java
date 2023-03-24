@@ -57,6 +57,37 @@ class MagasinTest {
     }
 
     @Test
+    void testKrypto() {
+        Random random = new Random();
+        int peremption = random.nextInt(100 - 0 + 1) + 0;
+        int quality = 50;
+        Item[] items = new Item[] { new Item("Kryptonite", peremption, quality)};
+        Magasin app = new Magasin(items);
+        // WHEN
+        app.updateQuality();
+        // THEN
+        /* sellIn update */
+        assertEquals(peremption, items[0].sellIn);
+        /* quality update */
+        assertEquals(quality, items[0].quality);
+    }
+
+    @Test
+    void testComteSellIn() {
+        int preremption = 0;
+        int quality = 50;
+        Item[] items = new Item[] { new Item("Comté", preremption, quality)};
+        Magasin app = new Magasin(items);
+        // WHEN
+        app.updateQuality();
+        // THEN
+        /* sellIn update */
+        assertEquals(preremption - 1, items[0].sellIn);
+        /* quality update */
+        assertEquals(quality, items[0].quality);
+    }
+
+    @Test
     void testConcertBeforeSellIn() {
         Item[] items = new Item[]{new Item("Pass VIP Concert", 15, 20)};
         Magasin app = new Magasin(items);
@@ -109,36 +140,7 @@ class MagasinTest {
     }
 
 
-    @Test
-    void testKrypto() {
-        Random random = new Random();
-        int peremption = random.nextInt(100 - 0 + 1) + 0;
-        int quality = 50;
-        Item[] items = new Item[] { new Item("Kryptonite", peremption, quality)};
-        Magasin app = new Magasin(items);
-        // WHEN
-        app.updateQuality();
-        // THEN
-        /* sellIn update */
-        assertEquals(peremption, items[0].sellIn);
-        /* quality update */
-        assertEquals(quality, items[0].quality);
-    }
 
-    @Test
-    void testComteSellIn() {
-        int preremption = 0;
-        int quality = 50;
-        Item[] items = new Item[] { new Item("Comté", preremption, quality)};
-        Magasin app = new Magasin(items);
-        // WHEN
-        app.updateQuality();
-        // THEN
-        /* sellIn update */
-        assertEquals(preremption - 1, items[0].sellIn);
-        /* quality update */
-        assertEquals(quality, items[0].quality);
-    }
 
 
 }
