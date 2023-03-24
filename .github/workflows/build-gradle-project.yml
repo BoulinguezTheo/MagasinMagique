@@ -14,4 +14,4 @@ jobs:
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
       - name: tests
-        run: ./gradlew test --tests MagasinTest
+        run: ./gradlew test --tests --scan MagasinTest
