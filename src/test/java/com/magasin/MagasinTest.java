@@ -140,4 +140,5 @@ class MagasinTest {
         assertEquals(quality, items[0].quality);
     }
 
+
 }
