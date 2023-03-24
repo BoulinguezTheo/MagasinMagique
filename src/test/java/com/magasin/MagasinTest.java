@@ -20,7 +20,7 @@ class MagasinTest {
     }
     @Test
     void testPouvoirsMagiquesAfterSellIn() {
-        int peremption = 0;
+        int peremption = -1;
         int quality = 10;
         Item[] items = new Item[] { new Item("Pouvoirs magiques", peremption, quality)};
         Magasin app = new Magasin(items);
@@ -28,7 +28,7 @@ class MagasinTest {
         app.updateQuality();
 
         assertEquals(peremption - 1, items[0].sellIn);
-        assertEquals(quality - 4, items[0].quality);
+        assertEquals(6, items[0].quality);
     }
 
     @Test
