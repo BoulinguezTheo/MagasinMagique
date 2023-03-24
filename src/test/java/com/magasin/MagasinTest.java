@@ -1,16 +1,35 @@
 package com.magasin;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 class MagasinTest {
+
+    @Test
+    void testPouvoirsMagiquesBeforeSellIn() {
+        int peremption = 10;
+        int quality = 10;
+        Item[] items = new Item[] { new Item("Pouvoirs magiques", peremption, quality)};
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(9, items[0].sellIn);
+        assertEquals(8, items[0].quality);
+    }
+    @Test
+    void testPouvoirsMagiquesAfterSellIn() {
+        int peremption = 0;
+        int quality = 10;
+        Item[] items = new Item[] { new Item("Pouvoirs magiques", peremption, quality)};
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(peremption - 1, items[0].sellIn);
+        assertEquals(quality - 4, items[0].quality);
+    }
 
     @Test
     void testItems() {
